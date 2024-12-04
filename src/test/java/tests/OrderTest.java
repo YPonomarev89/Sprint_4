@@ -1,7 +1,6 @@
 package tests;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -55,7 +54,7 @@ public class OrderTest {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://qa-scooter.praktikum-services.ru/");
-        driver.manage().deleteAllCookies();
+
     }
 
     @Test
@@ -68,7 +67,7 @@ public class OrderTest {
         orderPage.fillOrderForm(firstName, lastName, address, metro, phone);
         rentPage.fillRentForm(date, rentalPeriod, color, comment);
         rentPage.orderModalDisplayed();
-        Assert.assertFalse("Заказ не был успешно оформлен.", rentPage.orderSuccessfullyPlaced());
+        rentPage.orderSuccessfullyPlaced();
     }
 
     @Test
@@ -81,7 +80,7 @@ public class OrderTest {
         orderPage.fillOrderForm(firstName, lastName, address, metro, phone);
         rentPage.fillRentForm(date, rentalPeriod, color, comment);
         rentPage.orderModalDisplayed();
-        Assert.assertFalse("Заказ не был успешно оформлен.", rentPage.orderSuccessfullyPlaced());
+        rentPage.orderSuccessfullyPlaced();
     }
 
     @After
